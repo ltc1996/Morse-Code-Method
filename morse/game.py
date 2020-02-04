@@ -4,7 +4,9 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 
 import re
+import os
 import sys
+import configparser
 
 from engine import di, da, morse2alpha, alpha2morse
 
@@ -108,6 +110,8 @@ class Game:
 class Method:
     def __init__(self):
         # print('this is query')
+        self.setting_filename = 'setting.ini'
+        self.initsetting()
         self.main()
 
     def main(self):
@@ -211,6 +215,36 @@ class Method:
         clip.setText(string)
         self.copy_info.setText('done')
 
+    def save(self):
+        try:
+            self.config.write(open(self.setting_filename, 'w'))
+            return True
+        except:
+            return False
+
+    def setting(self, pro, value) -> None:
+        if not isinstance(value, str):
+            raise TypeError('wrong args')
+        self.config.set('setting', pro, value)
+        self.save()
+
+    def initsetting(self):
+        exist = os.path.exists(self.setting_filename)
+        if not exist:
+            with open(self.setting_filename, 'w') as f:
+                print('init setting file..')
+
+        self.config = configparser.ConfigParser()
+        self.config.read(self.setting_filename)
+        sections = self.config.sections()
+        if 'setting' not in sections:
+            print('setting')
+            self.config.add_section('setting')
+        self.config.write(open(self.setting_filename, 'w'))
+
+    def readsetting(self, pro) -> bool:
+        return self.config.get('setting', pro)
+
     def show(self):
         self.main_box.show()
 
@@ -218,7 +252,8 @@ class Method:
 if __name__ == '__main__':
     app = QtWidgets.QApplication()
     method_curr = Method()
-    method_curr.show()
+    method_curr.setting('alpha', '123')
+    print(method_curr.readsetting('alpha'))
     sys.exit(app.exec_())
 
 # pyinstaller -F game.py --noconsole

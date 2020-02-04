@@ -37,4 +37,7 @@ plus a pic for memorization
 - Bottom textEdit is for catching **Morse codes**
 ![](morse/gif/b.gif)
 
+- implement capitalize()
+![](morse/gif/dw.gif)
+
 
