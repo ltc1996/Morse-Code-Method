@@ -71,8 +71,16 @@ def varname() -> str:
             return m.group(1)
 
 
+# for .md table
+def print_table():
+    for k, v in alpha2morse.items():
+        print('|  ' + '`' + k + '`  | `' + v + '`' + ' ' * (5 - len(v)) + '|')
 # alpha2morse = 'alpha2morse'
+
 
 # alpha2morse = setvariable(alpha2morse, json)
 morse2alpha = genTrie(alpha2morse)
-print(morse2alpha.show())
+
+if __name__ == "__main__":
+    # print_table()
+    print(morse2alpha.show())
