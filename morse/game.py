@@ -6,9 +6,10 @@ from PySide2.QtGui import *
 import re
 import sys
 
-from morse.morse import morse2alpha, alpha2morse
+from engine import di, da, morse2alpha, alpha2morse
 
-class Game():
+
+class Game:
     def __init__(self):
         self.welcome()
 
@@ -104,7 +105,7 @@ class Game():
         self.main_box.show()
 
 
-class Query():
+class Method:
     def __init__(self):
         # print('this is query')
         self.main()
@@ -175,32 +176,20 @@ class Query():
                 for char in word:
                     if char.isalpha():
                         try:
-                            res += morse2alpha[char.upper()]
+                            res += alpha2morse[char.upper()]
                         except KeyError:
                             res += '?'
                     else:
                         res += '?'
                     res += ' '
-            # string_from_lst = string_from.split(' ')
-            # for char in string_from:
-            #     if char.isalpha():
-            #         try:
-            #             res += morse2alpha[char.upper()]
-            #         except KeyError:
-            #             res += '?'
-            #     elif char == ' ':
-            #         res += '/'
-            #         continue
-            #     else:
-            #         res += '?'
-            #     res += ' '
             print(res)
             input_obj.setText(res)
             input_obj.moveCursor(QTextCursor.End)
         if type == 1:
             string_from = output_obj.toPlainText()
             # print(string_from)
-            p = re.findall(r'([·|-]+|/+)', string_from)
+            regex = '([{}|{}]+|/+)'.format(di, da)
+            p = re.findall(regex, string_from)
             # print(p)
             down = False
             for tmp in p:
@@ -208,7 +197,7 @@ class Query():
                     res += ' '
                     down = False
                     continue
-                char = alpha2morse.search(tmp)
+                char = morse2alpha.search(tmp)
                 if char:
                     if down:
                         char = char.lower()
@@ -218,10 +207,7 @@ class Query():
                     res += '?'
             print(res)
             input_obj.setText(res)
-        # print(res)
-        # print(input_obj.document())
-        # input_obj.set(output_obj.
-        # ouput_obj.setPlainText(input_obj.getPaintContext())
+
         # return
 
     def copytoboard(self, lineedit):
@@ -234,12 +220,11 @@ class Query():
     def show(self):
         self.main_box.show()
 
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication()
-    query = Query()
-    query.show()
-    # game = Game()
-    # game.show()
+    method_curr = Method()
+    method_curr.show()
     sys.exit(app.exec_())
 
 # pyinstaller -F game.py --noconsole
