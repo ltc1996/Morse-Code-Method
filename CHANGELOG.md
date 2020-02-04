@@ -4,4 +4,5 @@
 * Create this repo and upload the original file
 
 ## 0.0.2(2020/02/04)
-* 
+* Text Transform capitalize implement
+

@@ -135,11 +135,8 @@ class Method:
 
         self.buttom_text.cursorPositionChanged.connect(
             lambda: self.showWhatYouWant(self.buttom_text, self.top_text, 1)
-        #     # lambda: self.top_text.setText(self.buttom_text.text())
         )
-        # self.buttom_text.connect()
-        # if self.top_text.textChanged():
-        #     print('changes')
+
         self.copy = QPushButton('copy')
         self.copy_info = QLabel('')
         self.copy.setFixedSize(80, 50)
