@@ -31,10 +31,10 @@ plus a pic for memorization
 
 ## Usage (for now)
 
-- Top lineedit is for inputing **Englise letters**
+- Top lineEdit is for catching **English letters**
 ![](morse/gif/f.gif)
 
-- Bottom textedit is for inputing **Morse codes**
+- Bottom textEdit is for catching **Morse codes**
 ![](morse/gif/b.gif)
 
 
