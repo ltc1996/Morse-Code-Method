@@ -5,7 +5,7 @@ import re
 
 from support.Trie import Trie
 
-di = '·'
+di = '.'
 da = '-'
 
 alpha2morse = {
