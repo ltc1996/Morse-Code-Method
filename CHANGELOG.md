@@ -7,5 +7,6 @@
 * Text Transform capitalize implement
 
 ## 0.0.3(2020/02/04)
-* Add `setting.ini` file for further development
+* Add `setting.ini` file for further development(maybe a setting PushButton)
+
 
