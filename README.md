@@ -31,10 +31,10 @@ plus a pic for memorization
 
 ## Usage (for now)
 
-- Top lineEdit is for catching **English letters**
+- Top lineedit is for inputing **Englise letters**
 ![](morse/gif/f.gif)
 
-- Bottom textEdit is for catching **Morse codes**
+- Bottom textedit is for inputing **Morse codes**
 ![](morse/gif/b.gif)
 
 - implement capitalize()

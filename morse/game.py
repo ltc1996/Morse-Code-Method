@@ -160,7 +160,7 @@ class Method:
         """
         type:
         0: morse -> alpha
-        1: alpha -> morse
+        1: reversed
         """
         res = ''
         self.copy_info.setText('')
@@ -188,6 +188,7 @@ class Method:
             input_obj.moveCursor(QTextCursor.End)
         if type == 1:
             string_from = output_obj.toPlainText()
+            # print(string_from)
             regex = '([{}|{}]+|/+)'.format(di, da)
             p = re.findall(regex, string_from)
             # print(p)
@@ -207,6 +208,8 @@ class Method:
                     res += '?'
             print(res)
             input_obj.setText(res)
+
+        # return
 
     def copytoboard(self, lineedit):
         clip = QApplication.clipboard()
