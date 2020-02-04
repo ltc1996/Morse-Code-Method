@@ -1,5 +1,5 @@
 # Morse-Code-Method
-morse code &lt;-> english letter
+morse code <-> english letter
 
 ## Intro
 
@@ -20,14 +20,18 @@ morse code &lt;-> english letter
 |  `M`  | `--`   |  `Z`  | `--..` |
 
 
-only letter part, i have not done the number * notion part
+only letter part, i have not done the number & notion part
 
 Plus a pic for memorization
 
-![](res/morse.jpg)
+![](morse/res/morse.jpg)
 
-## Usage
-#:TODO
+## Usage (for now)
 
-![](gif/b.gif)
+- Top lineedit is for inputing **Englise letters**
+![](morse/gif/f.gif)
+
+- Bottom textedit is for inputing **Morse codes**
+![](morse/gif/b.gif)
+
 
