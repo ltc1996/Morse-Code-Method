@@ -6,7 +6,7 @@ from PySide2.QtGui import *
 import re
 import sys
 
-from morse import morse2alpha, alpha2morse
+from morse.morse import morse2alpha, alpha2morse
 
 class Game():
     def __init__(self):

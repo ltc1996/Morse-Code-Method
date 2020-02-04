@@ -1,3 +1,5 @@
+from Trie import Trie
+
 di = '·'
 da = '-'
 
@@ -29,41 +31,6 @@ morse2alpha = {
     'Y': da + di + da + da,
     'Z': da + da + di + di,
 }
-
-
-class Trie:
-    def __init__(self):
-        """
-        Initialize your data structure here.
-        """
-        self.root = {}
-
-    def insert(self, word, alpha):
-        node = self.root
-        # print(node, word, alpha)
-        for char in word:
-            if char not in node.keys():
-                node[char] = {}
-            node = node[char]
-        # print(node)
-        node['word'] = alpha
-        # print(alpha, 'over')
-        # node[char] = morse2alpha[alpha]
-
-    def search(self, word) -> bool:
-        node = self.root
-        for char in word:
-            if char not in node.keys():
-                return False
-            else:
-                node = node[char]
-        # print(node)
-        # print(node['word'])
-        return node['word']
-
-    def show(self):
-        return self.root
-
 
 alpha2morse = Trie()
 for k, v in morse2alpha.items():
