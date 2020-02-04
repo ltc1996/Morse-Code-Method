@@ -1,5 +1,7 @@
 # Morse-Code-Method
+
 morse code <-> english letter
+![](https://img.shields.io/github/last-commit/ltc1996/Morse-Code-Method/dev?style=plastic)
 
 ## Intro
 
@@ -20,9 +22,9 @@ morse code <-> english letter
 |  `M`  | `--`   |  `Z`  | `--..` |
 
 
-only letter part, i have not done the number & notion part
+> only letter part, i have not done the number & notion part
 
-Plus a pic for memorization
+plus a pic for memorization
 
 ![](morse/res/morse.jpg)
 
