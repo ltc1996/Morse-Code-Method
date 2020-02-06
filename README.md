@@ -5,6 +5,12 @@ morse code <-> english letter
 ![](https://img.shields.io/github/last-commit/ltc1996/Morse-Code-Method/dev?style=plastic)
 
 ## Intro
+i can do this 
+
+![](morse/gif/candothis.gif)
+
+also this
+![](morse/gif/alsothis.gif)
 
 | alpha | morse  | alpha | morse  |
 | :---: | :----  | :---: | :----  | 
@@ -33,10 +39,10 @@ plus a pic for memorization
 
 Run `./morse/method.py` directly, and the main window will show up.
 
-- Top lineedit is for inputing **Englise letters**
+- Top lineEdit is for catching **English letters**
 ![](morse/gif/f.gif)
 
-- Bottom textedit is for inputing **Morse codes**
+- Bottom textEdit is for catching **Morse codes**
 ![](morse/gif/b.gif)
 
 - implement capitalize()
