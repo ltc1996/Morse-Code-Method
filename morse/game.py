@@ -9,7 +9,7 @@ import sys
 import configparser
 
 from engine import di, da, morse2alpha, alpha2morse
-
+from __init__ import __version__
 
 class Game:
     def __init__(self):
@@ -116,17 +116,24 @@ class Method:
 
     def main(self):
         self.main_box = QWidget()
-        self.main_box.setFixedSize(630, 450)
-        self.main_box.setWindowTitle('Translation Running Time')
+        logo_svg = QIcon(r'./res/Logo.svg')     # logo: ./res/Logo.svg
+        self.main_box.setWindowIcon(logo_svg)
+        # self.main_box.setFixedSize(630, 450)
+        title = 'Translation Running Time {}'.format(__version__)
+        self.main_box.setWindowTitle(title)
         self.main_grid = QVBoxLayout()
 
         self.top_text = QLineEdit()#QPlainTextEdit()
+        # self.top_text.setTab
         self.top_text.setFont(QFont("Decorative", 30))
-        self.top_text.setFixedSize(600, 50)
+        # self.top_text.setFixedSize(600, 50)
 
         self.buttom_text = QTextEdit()#QLineEdit()#QPlainTextEdit()
         self.buttom_text.setFont(QFont("Decorative", 30))
-        self.buttom_text.setFixedSize(600, 200)
+        self.buttom_text.setTabStopWidth(1)
+        # self.buttom_text.setTextColor(QColor(255, 80, 0, 160))
+        # self.buttom_text.setTextBackgroundColor(QColor(0, 0, 0))
+        # self.buttom_text.setFixedSize(600, 200)
         # self.buttom_text.setReadOnly(True)
         # self.buttom_text.moveCursor(QTextCursor.End)
         self.top_text.textEdited.connect(
@@ -141,17 +148,30 @@ class Method:
             lambda: self.showWhatYouWant(self.buttom_text, self.top_text, 1)
         )
 
+        # setting button
+        self.setting_btn = QPushButton()
+        icon_svg = QIcon('./res/Setting.svg')
+        self.setting_btn.setIcon(icon_svg)
+        self.setting_btn.setFixedSize(80, 50)
+        self.setting_btn.clicked.connect(lambda: self.setting_dialog())
+
         self.copy = QPushButton('copy')
         self.copy_info = QLabel('')
         self.copy.setFixedSize(80, 50)
         self.copy.clicked.connect(lambda: self.copytoboard(self.buttom_text))
-
         self.copy_info.setAlignment(Qt.AlignRight)
 
+        # lineEdit and textEdit
         self.main_grid.addWidget(self.top_text)
         self.main_grid.addWidget(self.buttom_text)
-        self.main_grid.addWidget(self.copy)
-        self.main_grid.addWidget(self.copy_info)
+
+        # button h box
+        self.button_h = QHBoxLayout()
+        self.button_h.addWidget(self.setting_btn)
+        self.button_h.addWidget(self.copy)
+        self.button_h.addWidget(self.copy_info)
+
+        self.main_grid.addLayout(self.button_h)
 
         self.main_box.setLayout(self.main_grid)
         # self.main_box.show()
@@ -211,6 +231,24 @@ class Method:
 
         # return
 
+    def setting_dialog(self):
+        print('setting')
+        self.setting_d = QDialog(None, Qt.WindowCloseButtonHint)
+        self.setting_d.setWindowTitle('Setting Options')
+        self.setting_d.setFixedSize(400, 200)
+        self.setting_d.show()
+
+        # assign your own bi-nary Morse code
+        intro = QLabel('Some setting options will be there soon')
+        this_di = ''
+        this_da = ''
+
+        main_v = QVBoxLayout()
+        main_v.addWidget(intro)
+
+        self.setting_d.setLayout(main_v)
+
+
     def copytoboard(self, lineedit):
         clip = QApplication.clipboard()
         string = lineedit.toPlainText()
@@ -255,8 +293,9 @@ class Method:
 if __name__ == '__main__':
     app = QtWidgets.QApplication()
     method_curr = Method()
-    method_curr.setting('alpha', '123')
-    print(method_curr.readsetting('alpha'))
+    method_curr.show()
+    # method_curr.setting('alpha', '123')
+    # print(method_curr.readsetting('alpha'))
     sys.exit(app.exec_())
 
 # pyinstaller -F game.py --noconsole
