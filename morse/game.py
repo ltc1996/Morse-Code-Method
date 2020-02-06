@@ -250,6 +250,9 @@ class Method:
         main_v = QVBoxLayout()
         main_v.addWidget(intro)
         main_v.addWidget(color)
+        main_v.addWidget(QLabel(''))
+        main_v.addWidget(QLabel(''))
+        main_v.addWidget(QLabel(''))
 
         self.setting_d.setLayout(main_v)
 
@@ -258,7 +261,8 @@ class Method:
         string = lineedit.toPlainText()
         # print(string)
         clip.setText(string)
-        self.copy_info.setText('done')
+        self.copy_info.setText('\nCopied to clipboard')
+        self.copy_info.setFont(QFont("Decorative", 10))
 
     def changeColor_Dialog(self,):
         print('change color')

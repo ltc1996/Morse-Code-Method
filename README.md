@@ -13,7 +13,7 @@ Morse code <-> English letter
 
 | **Not only**  | **But also** |
 | :----:  | :---: |
-| <img src="morse/gif/candothis.GIF" alt="this is the first thing i can do " width=400 height=300 />   |  <img src="morse/gif/alsothis.GIF" alt="this is another thing i can do " width=400 height=300 />  |
+| <img src="morse/gif/candothis.gif" alt="this is the first thing i can do " width=400 height=300 />   |  <img src="morse/gif/alsothis.gif" alt="this is another thing i can do " width=400 height=300 />  |
 
 ## Usage (for now)
 
@@ -33,7 +33,7 @@ catching **English letters**
 
 <img 
     src="morse/gif/b.gif" 
-    alt="buttom"
+    alt="button"
     width=70% 
     height=70% 
 />
