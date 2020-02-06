@@ -12,3 +12,6 @@
 ## 0.0.3(2020/00/06)
 * Add setting Dialog in main window for further development
 
+## 0.0.4(2020/00/06)
+* Add change font function
+

@@ -31,6 +31,8 @@ plus a pic for memorization
 
 ## Usage (for now)
 
+Run `./morse/method.py` directly, and the main window will show up.
+
 - Top lineedit is for inputing **Englise letters**
 ![](morse/gif/f.gif)
 

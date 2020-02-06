@@ -236,18 +236,22 @@ class Method:
         self.setting_d = QDialog(None, Qt.WindowCloseButtonHint)
         self.setting_d.setWindowTitle('Setting Options')
         self.setting_d.setFixedSize(400, 200)
+        logo_svg = QIcon(r'./res/Logo.svg')  # logo: ./res/Logo.svg
+        self.setting_d.setWindowIcon(logo_svg)
         self.setting_d.show()
 
         # assign your own bi-nary Morse code
         intro = QLabel('Some setting options will be there soon')
+        color = QPushButton('Change Font')
+        color.clicked.connect(lambda: self.changeColor_Dialog())
         this_di = ''
         this_da = ''
 
         main_v = QVBoxLayout()
         main_v.addWidget(intro)
+        main_v.addWidget(color)
 
         self.setting_d.setLayout(main_v)
-
 
     def copytoboard(self, lineedit):
         clip = QApplication.clipboard()
@@ -255,6 +259,21 @@ class Method:
         # print(string)
         clip.setText(string)
         self.copy_info.setText('done')
+
+    def changeColor_Dialog(self,):
+        print('change color')
+        color_d = QFontDialog(self.setting_d)
+        logo_svg = QIcon(r'./res/Logo.svg')  # logo: ./res/Logo.svg
+        color_d.setWindowIcon(logo_svg)
+        color_d.setWindowTitle('Changing...')
+        # color_d.open()
+        (ok, font) = color_d.getFont()
+        if ok:
+            # print(font)
+            self.top_text.setFont(font)
+        else:
+            print('cancel')
+            pass
 
     def save(self):
         try:
