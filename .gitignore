@@ -133,3 +133,9 @@ dmypy.json
 .pyre/
 
 dist/
+
+morse/dist
+
+morse/build
+
+morse/game.exe

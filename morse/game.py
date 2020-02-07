@@ -8,8 +8,9 @@ import os
 import sys
 import configparser
 
-from engine import di, da, morse2alpha, alpha2morse
 from __init__ import __version__
+from convert import *
+
 
 class Game:
     def __init__(self):
@@ -186,46 +187,13 @@ class Method:
         self.copy_info.setText('')
         if type == 0:
             string_from = output_obj.text()
-            # print(string_from)
-            p = re.findall(r'\S+|\s', string_from)
-            # print(p)
-            for word in p:
-                # print(word)
-                if word[0] == ' ':
-                    res += '/'
-                    continue
-                for char in word:
-                    if char.isalpha():
-                        try:
-                            res += alpha2morse[char.upper()]
-                        except KeyError:
-                            res += '?'
-                    else:
-                        res += '?'
-                    res += ' '
+            res = alpha_morse(string_from)
             print(res)
             input_obj.setText(res)
             input_obj.moveCursor(QTextCursor.End)
         if type == 1:
             string_from = output_obj.toPlainText()
-            # print(string_from)
-            regex = '([{}|{}]+|/+)'.format(di, da)
-            p = re.findall(regex, string_from)
-            # print(p)
-            down = False
-            for tmp in p:
-                if tmp == '/':
-                    res += ' '
-                    down = False
-                    continue
-                char = morse2alpha.search(tmp)
-                if char:
-                    if down:
-                        char = char.lower()
-                    res += char
-                    down = True
-                else:
-                    res += '?'
+            res = morse_alpha(string_from)
             print(res)
             input_obj.setText(res)
 
@@ -247,10 +215,13 @@ class Method:
         this_di = ''
         this_da = ''
 
+        file = QPushButton('Choose from file')
+        file.clicked.connect(lambda: self.convertFile('1'))
+
         main_v = QVBoxLayout()
         main_v.addWidget(intro)
         main_v.addWidget(color)
-        main_v.addWidget(QLabel(''))
+        main_v.addWidget(file)
         main_v.addWidget(QLabel(''))
         main_v.addWidget(QLabel(''))
 
@@ -277,7 +248,29 @@ class Method:
             self.top_text.setFont(font)
         else:
             print('cancel')
-            pass
+
+    def convertFile(self, mode):
+        print('convert file in mode {}'.format(mode))
+        file_name = self.chooseFile_Dialog()
+        print(file_name)
+
+    def chooseFile_Dialog(self):
+        print('choose file')
+        file_d = QFileDialog()
+        logo_svg = QIcon(r'./res/Logo.svg')  # logo: ./res/Logo.svg
+        file_d.setWindowIcon(logo_svg)
+        file_d.setWindowTitle('Choosing...')
+        file_d.setFileMode(QFileDialog.ExistingFile)        # choose from existing files
+        file_d.setAcceptMode(QFileDialog.AcceptOpen)
+        # if file_d.exec():
+        file_name = file_d.getOpenFileName()
+        return file_name
+
+    def saveFile_Dialog(self, filename):
+        print('Saving...')
+        pass
+
+
 
     def save(self):
         try:

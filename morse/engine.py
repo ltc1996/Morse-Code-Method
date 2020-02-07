@@ -9,6 +9,7 @@ di = '.'
 da = '-'
 
 alpha2morse = {
+    # 'A' - 'Z'
     'A': di + da          ,
     'B': da + di + di + di,
     'C': da + di + da + di,
@@ -35,8 +36,37 @@ alpha2morse = {
     'X': da + di + di + da,
     'Y': da + di + da + da,
     'Z': da + da + di + di,
-}
+    # 0 - 9
+    '0': da + da + da + da + da,
+    '1': di + da + da + da + da,
+    '2': di + di + da + da + da,
+    '3': di + di + di + da + da,
+    '4': di + di + di + di + da,
+    '5': di + di + di + di + di,
+    '6': da + di + di + di + di,
+    '7': da + da + di + di + di,
+    '8': da + da + da + di + di,
+    '9': da + da + da + da + di,
 
+    # others
+    '.': di + da + di + da + di + da,
+    ':': da + da + da + di + di + di,
+    ',': da + da + di + di + da + da,
+    ';': da + di + da + di + da + di,
+    '?': di + di + da + da + di + di,
+    '=': da + di + di + di + da,
+    "'": di + da + da + da + da + di,
+    '/': da + di + di + da + di,
+    '!': da + di + da + di + da + da,
+    '-': da + di + di + di + di + da,
+    '+': di + da + di + da + di,
+    '_': di + di + da + da + di + da,
+    '"': di + da + di + di + da + di,
+    '(': da + di + da + da + di,
+    ')': da + di + da + da + di + da,
+    '$': di + di + di + da + di + di + da,
+    '@': di + da + da + di + da + di,
+}
 
 # generatr trie from the letter -> morse list
 def genTrie(dict_to_trie) -> Trie:
